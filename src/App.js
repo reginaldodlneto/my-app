@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import TemplateDefault from './templates/Default'
+
+import Customers from './pages/Customers'
 import Home from './pages/Home'
 
 const App = () => {
@@ -8,6 +10,9 @@ const App = () => {
     <TemplateDefault>
       <Router>
         <Switch>
+          <Route path="/customers">
+            <Customers />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
