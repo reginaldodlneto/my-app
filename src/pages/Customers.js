@@ -1,12 +1,22 @@
 import { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import axios from 'axios'
+import Grid from '@material-ui/core/Grid'
 
 import CustomerCard from '../components/CustomerCard'
 
-const Customers = () => {
-  const [customers, setCustomers] = useState([])
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  card: {
+    margin: theme.spacing(2)
+  }
+}))
 
-  console.log(customers)
+const Customers = () => {
+  const classes = useStyles()
+  const [customers, setCustomers] = useState([])
 
   useEffect(() => {
     axios.get('https://reqres.in/api/users').then(response => {
@@ -16,17 +26,28 @@ const Customers = () => {
     })
   }, [])
 
+  // XS = Extra Small
+  // SM = Small
+  // MD = Medium
+  // LG = Large
+  //XL = Extra Large
+
   return (
     <>
       <h1>Customers</h1>
-      {customers.map(item => (
-        <CustomerCard
-          name={item.first_name}
-          lastname={item.last_name}
-          email={item.email}
-          avatar={item.avatar}
-        />
-      ))}
+      <Grid container>
+        {customers.map(item => (
+          <Grid item xs={12} md={4}>
+            <CustomerCard
+              name={item.first_name}
+              lastname={item.last_name}
+              email={item.email}
+              avatar={item.avatar}
+              className={classes.card}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </>
   )
 }
