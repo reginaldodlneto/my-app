@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import { teal, purple } from '@material-ui/core/colors'
+import { teal, purple, red } from '@material-ui/core/colors'
 
 import App from './App'
 import './index.css'
@@ -13,6 +13,9 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: purple[800]
+    },
+    alert: {
+      main: red[600]
     }
   }
 })
