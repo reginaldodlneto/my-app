@@ -1,12 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import { teal, purple, red } from '@material-ui/core/colors'
+
+import { AuthProvider } from './state/auth'
 
 import App from './App'
 import './index.css'
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: teal[900]
@@ -23,7 +25,9 @@ const theme = createMuiTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
